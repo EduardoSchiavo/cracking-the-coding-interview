@@ -8,6 +8,27 @@ package arraystring;
  */
 class _01_06_StringCompression {
     String compress(String s) {
-        throw new UnsupportedOperationException();
+        StringBuilder compressing = new StringBuilder();
+        int count = 1;
+        char curr = s.charAt(0);
+
+        for (int i =1; i <s.length(); i++){
+            if (s.charAt(i) == curr){
+                count++;
+            } else {
+                compressing.append(count);
+                compressing.append(curr);
+
+                curr = s.charAt(i);
+                count = 1;
+            }
+        }
+        compressing.append(count);
+        compressing.append(curr);
+        System.out.println(s);
+
+        String compressed = compressing.toString();
+        System.out.println(compressed);
+        return compressed.length() < s.length() ? compressed : s;
     }
 }

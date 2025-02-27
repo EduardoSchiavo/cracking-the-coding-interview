@@ -8,30 +8,37 @@ import java.util.List;
  */
 class _01_08_ZeroMatrix {
     int[][] zero(int[][] matrix) {
-        ArrayList<Integer> zCols = new ArrayList<Integer>();
-        ArrayList<Integer> zRows = new ArrayList<Integer>();
         int n = matrix.length;
         int m = matrix[0].length;
+
+        boolean[] zCols = new boolean[n];
+        boolean[] zRows = new boolean[m];
+
+
 
         //find zeros
         for (int c=0; c< n; c++){
             for (int r=0; r<m; r++){
                 if(matrix[c][r] == 0){
-                    zCols.add(c);
-                    zRows.add(r);
+                    zCols[c] = true;
+                    zRows[r] = true;
                 }
             }
         }
 
-        for(int c: zCols){
-            for (int i =0; i<m; i++) {
-                matrix[c][i] = 0;
+        for(int c=0; c<n; c++){
+            if(zCols[c]) {
+                for (int i = 0; i < m; i++) {
+                    matrix[c][i] = 0;
+                }
             }
         }
 
-        for(int r: zRows){
-            for (int i =0; i<n; i++){
-                matrix[i][r] =0;
+        for(int r=0; r<m; r++){
+            if(zRows[r]) {
+                for (int i = 0; i < n; i++) {
+                    matrix[i][r] = 0;
+                }
             }
         }
 

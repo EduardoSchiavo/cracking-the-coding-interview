@@ -7,7 +7,28 @@ package arraystring;
  */
 class _01_09_StringRotation {
     boolean rotated(String original, String result) {
-        throw new UnsupportedOperationException();
+        if(original.isEmpty() || result.isEmpty()){
+            return true;
+        }
+        if(original.isEmpty() ^ result.isEmpty()){
+            return false;
+        }
+
+        if (original.length() != result.length()){
+            return false;
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        int start = result.indexOf(original.charAt(0));
+        if (start == -1){
+            return false;
+        }
+        for(int i = start; i< start + result.length(); i++){
+            stringBuilder.append(result.charAt(i%result.length()));
+        }
+
+        return original.equals(stringBuilder.toString());
+
     }
 
 }

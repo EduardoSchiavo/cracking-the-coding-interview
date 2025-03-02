@@ -7,12 +7,13 @@ package arraystring;
  */
 class _01_09_StringRotation {
     boolean rotated(String original, String result) {
-        if(original.isEmpty() || result.isEmpty()){
-            return true;
-        }
-        if(original.isEmpty() ^ result.isEmpty()){
+        if(original.isEmpty()){
+            if (result.isEmpty()){
+                return true;
+            }
             return false;
         }
+
 
         if (original.length() != result.length()){
             return false;

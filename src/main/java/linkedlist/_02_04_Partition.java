@@ -13,7 +13,7 @@ package linkedlist;
 class _02_04_Partition {
 
     LinkedListNode partition(LinkedListNode head, int x) {
-        if (head == null || head.next == null){
+        if (head == null || head.next == null) {
             return head;
         }
         LinkedListNode curr = head;
@@ -24,17 +24,17 @@ class _02_04_Partition {
         lH = lT = null;
         rH = rT = null;
 
-        while (curr != null){
-            System.out.println("curr: " +  curr.val);
-            if (curr.val < x){
-                if (lH == null){
+        while (curr != null) {
+            System.out.println("curr: " + curr.val);
+            if (curr.val < x) {
+                if (lH == null) {
                     lH = lT = curr;
                 } else {
                     lT.next = curr;
                     lT = curr;
                 }
             } else {
-                if (rH == null){
+                if (rH == null) {
                     rH = rT = curr;
                 } else {
                     rT.next = curr;
@@ -44,8 +44,10 @@ class _02_04_Partition {
             curr = curr.next;
         }
 
-        rT.next = null;
-        if (lT != null){
+        if (rT != null) {
+            rT.next = null;
+        }
+        if (lT != null) {
             lT.next = rH;
             return lH;
         }

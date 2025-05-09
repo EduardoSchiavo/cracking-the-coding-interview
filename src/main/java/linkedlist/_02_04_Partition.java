@@ -13,6 +13,45 @@ package linkedlist;
 class _02_04_Partition {
 
     LinkedListNode partition(LinkedListNode head, int x) {
-        throw new UnsupportedOperationException();
+        if (head == null || head.next == null){
+            return head;
+        }
+        LinkedListNode curr = head;
+        LinkedListNode lH;
+        LinkedListNode lT;
+        LinkedListNode rH;
+        LinkedListNode rT;
+        lH = lT = null;
+        rH = rT = null;
+
+        while (curr != null){
+            System.out.println("curr: " +  curr.val);
+            if (curr.val < x){
+                if (lH == null){
+                    lH = lT = curr;
+                } else {
+                    lT.next = curr;
+                    lT = curr;
+                }
+            } else {
+                if (rH == null){
+                    rH = rT = curr;
+                } else {
+                    rT.next = curr;
+                    rT = curr;
+                }
+            }
+            curr = curr.next;
+        }
+
+        rT.next = null;
+        if (lT != null){
+            lT.next = rH;
+            return lH;
+        }
+
+        return rH;
     }
+
+
 }
